@@ -20,6 +20,7 @@ module SmsSender
       request.content_type = "application/json"
       request.body = { to_number: to_number, message: message, callback_url: "https://abb9-41-80-118-187.ngrok.io/delivery_status" }.to_json
       response = http.request(request)
+      puts(response.body, "responseresponseresponseresponseresponseresponseresponse")
 
       if response.is_a?(Net::HTTPSuccess)
         # Successful response
@@ -61,14 +62,13 @@ module SmsSender
       http.use_ssl = true if uri.scheme == "https"
       request = Net::HTTP::Post.new(uri.request_uri)
       request.content_type = "application/json"
-      request.body = { to_number: to_number, message: message, callback_url: "https://abb9-41-80-118-187.ngrok.io/delivery_status" }.to_json
+      request.body = { to_number: to_number, message: message, callback_url: "https://dea8-41-80-118-187.ngrok.io/delivery_status" }.to_json
       response = http.request(request)
 
       if response.is_a?(Net::HTTPSuccess)
         # Successful response
         body = response.body
         # Process the response body as needed
-        puts(body, "bodybodybodybodybodybodybodybodybodybody")
         return { "success" => true, "body" => body }
       else
         # Handle unsuccessful response
@@ -79,7 +79,7 @@ module SmsSender
         http.use_ssl = true if uri.scheme == "https"
 
         request = Net::HTTP::Post.new(uri.request_uri)
-        request.body = { to_number: to_number, message: message, callback_url: "https://abb9-41-80-118-187.ngrok.io/delivery_status" }.to_json
+        request.body = { to_number: to_number, message: message, callback_url: "https://dea8-41-80-118-187.ngrok.io/delivery_status" }.to_json
         request.content_type = "application/json"
 
         response = http.request(request)

@@ -1,9 +1,6 @@
 class MessagesController < ApplicationController
   include SmsSender
 
-  def index
-  end
-
   def create
     # get messages/message from json object
     messages = Array(params["messages"])
@@ -30,17 +27,17 @@ class MessagesController < ApplicationController
       end
     end
 
-    second_part.each do |message|
-      to_number = message["to_number"]
-      message = message["message"]
-      response = send_sms_provider2(to_number, message)
+    # second_part.each do |message|
+    #   to_number = message["to_number"]
+    #   message = message["message"]
+    #   response = send_sms_provider2(to_number, message)
 
-      if response["success"]
-        Message.create(to_number: to_number, message: message, message_id: response["message_id"])
-      else
-        render_failure_message(to_number)
-        break
-      end
-    end
+    #   if response["success"]
+    #     Message.create(to_number: to_number, message: message, message_id: response["message_id"])
+    #   else
+    #     render_failure_message(to_number)
+    #     break
+    #   end
+    # end
   end
 end
