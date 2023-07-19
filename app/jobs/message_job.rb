@@ -13,6 +13,5 @@ class MessageJob < ApplicationJob
     else
       send_sms_provider2(to_number, message)
     end
-    return "yeeeessss"
   end
 end

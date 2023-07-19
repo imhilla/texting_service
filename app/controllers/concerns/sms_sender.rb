@@ -20,7 +20,6 @@ module SmsSender
       request.content_type = "application/json"
       request.body = { to_number: to_number, message: message, callback_url: "https://abb9-41-80-118-187.ngrok.io/delivery_status" }.to_json
       response = http.request(request)
-      puts(response.body, "responseresponseresponseresponseresponseresponseresponse")
 
       if response.is_a?(Net::HTTPSuccess)
         # Successful response
@@ -44,7 +43,6 @@ module SmsSender
           # Successful response
           body = response.body
           # Process the response body as needed
-          Message.create(to_number: to_number, message: message, message_id: response["message_id"])
           return { "success" => true, "body" => body }
         else
           return { "success" => false, "body" => nil }
