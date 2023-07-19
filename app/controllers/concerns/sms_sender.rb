@@ -16,11 +16,9 @@ module SmsSender
       uri = URI.parse(@provider1)
       http = Net::HTTP.new(uri.host, uri.port)
       http.use_ssl = true if uri.scheme == "https"
-
       request = Net::HTTP::Post.new(uri.request_uri)
-      request.body = { to_number: to_number, message: message, callback_url: "https://abb9-41-80-118-187.ngrok.io/delivery_status" }.to_json
       request.content_type = "application/json"
-
+      request.body = { to_number: to_number, message: message, callback_url: "https://abb9-41-80-118-187.ngrok.io/delivery_status" }.to_json
       response = http.request(request)
 
       if response.is_a?(Net::HTTPSuccess)
@@ -28,6 +26,7 @@ module SmsSender
         body = response.body
         # Process the response body as needed
         puts(body, "bodybodybodybodybodybodybodybodybodybody")
+        return { "success" => true, "body" => body }
       else
         # Handle unsuccessful response
         error_message = "Request failed with code #{response.code}"
@@ -41,6 +40,15 @@ module SmsSender
         request.content_type = "application/json"
 
         response = http.request(request)
+        if response.is_a?(Net::HTTPSuccess)
+          # Successful response
+          body = response.body
+          # Process the response body as needed
+          puts(body, "bodybodybodybodybodybodybodybodybodybody")
+          return { "success" => true, "body" => body }
+        else
+          return { "success" => false, "body" => nil }
+        end
       end
     end
 
@@ -61,6 +69,14 @@ module SmsSender
         split_index = (messages.size * percentage).to_i
         messages.partition.with_index { |_, index| index < split_index }
       end
+    end
+
+    def render_failure_message(to_number)
+      render json: { message: "SMS sending failed for message: #{to_number}" }
+    end
+
+    def invalid_details
+      render json: { message: "Please provide a valid phone number and message" }
     end
   end
 end
