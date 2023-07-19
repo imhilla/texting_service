@@ -36,7 +36,7 @@ module SmsSender
         http.use_ssl = true if uri.scheme == "https"
 
         request = Net::HTTP::Post.new(uri.request_uri)
-        request.body = { to_number: to_number, message: message, callback_url: "https://abb9-41-80-118-187.ngrok.io/delivery_status" }.to_json
+        request.body = { to_number: to_number, message: message, callback_url: "https://8d17-41-80-118-187.ngrok.io/delivery_status" }.to_json
         request.content_type = "application/json"
 
         response = http.request(request)
@@ -44,6 +44,7 @@ module SmsSender
           # Successful response
           body = response.body
           # Process the response body as needed
+          Message.create(to_number: to_number, message: message, message_id: response["message_id"])
           return { "success" => true, "body" => body }
         else
           return { "success" => false, "body" => nil }
@@ -62,7 +63,7 @@ module SmsSender
       http.use_ssl = true if uri.scheme == "https"
       request = Net::HTTP::Post.new(uri.request_uri)
       request.content_type = "application/json"
-      request.body = { to_number: to_number, message: message, callback_url: "https://dea8-41-80-118-187.ngrok.io/delivery_status" }.to_json
+      request.body = { to_number: to_number, message: message, callback_url: "https://8d17-41-80-118-187.ngrok.io/delivery_status" }.to_json
       response = http.request(request)
 
       if response.is_a?(Net::HTTPSuccess)
@@ -79,7 +80,7 @@ module SmsSender
         http.use_ssl = true if uri.scheme == "https"
 
         request = Net::HTTP::Post.new(uri.request_uri)
-        request.body = { to_number: to_number, message: message, callback_url: "https://dea8-41-80-118-187.ngrok.io/delivery_status" }.to_json
+        request.body = { to_number: to_number, message: message, callback_url: "https://8d17-41-80-118-187.ngrok.io/delivery_status" }.to_json
         request.content_type = "application/json"
 
         response = http.request(request)
