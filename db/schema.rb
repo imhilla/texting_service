@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_19_093926) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_19_114946) do
   create_table "delivery_statuses", force: :cascade do |t|
     t.string "status"
     t.string "message_id"
