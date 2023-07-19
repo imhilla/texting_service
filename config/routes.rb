@@ -3,7 +3,5 @@ Rails.application.routes.draw do
 
   # Tis is the default route path for checking if app is running
   root "application#health_check"
-
-  
-
+  resources :messages
 end
