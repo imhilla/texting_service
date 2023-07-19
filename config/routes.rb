@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  # Defines the root path route ("/")
+  # Tis is the default route path for checking if app is running
   root "application#health_check"
+
+  
+
 end
