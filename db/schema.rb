@@ -10,7 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_19_073919) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_19_093926) do
+  create_table "delivery_statuses", force: :cascade do |t|
+    t.string "status"
+    t.string "message_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "message_statuses", force: :cascade do |t|
+    t.string "message_id"
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "messages", force: :cascade do |t|
     t.string "to_number"
     t.string "message"
