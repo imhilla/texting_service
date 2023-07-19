@@ -9,6 +9,7 @@ module SmsSender
     private
 
     def send_sms_provider1(to_number, message)
+      puts("heeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee")
       @provider1 = "https://mock-text-provider.parentsquare.com/provider1"
       @provider2 = "https://mock-text-provider.parentsquare.com/provider2"
 
@@ -18,7 +19,7 @@ module SmsSender
       http.use_ssl = true if uri.scheme == "https"
       request = Net::HTTP::Post.new(uri.request_uri)
       request.content_type = "application/json"
-      request.body = { to_number: to_number, message: message, callback_url: "https://abb9-41-80-118-187.ngrok.io/delivery_status" }.to_json
+      request.body = { to_number: to_number, message: message, callback_url: "https://b09c-41-80-118-187.ngrok.io/delivery_status" }.to_json
       response = http.request(request)
 
       if response.is_a?(Net::HTTPSuccess)
@@ -35,7 +36,7 @@ module SmsSender
         http.use_ssl = true if uri.scheme == "https"
 
         request = Net::HTTP::Post.new(uri.request_uri)
-        request.body = { to_number: to_number, message: message, callback_url: "https://8d17-41-80-118-187.ngrok.io/delivery_status" }.to_json
+        request.body = { to_number: to_number, message: message, callback_url: "https://b09c-41-80-118-187.ngrok.io/delivery_status" }.to_json
         request.content_type = "application/json"
 
         response = http.request(request)
@@ -61,7 +62,7 @@ module SmsSender
       http.use_ssl = true if uri.scheme == "https"
       request = Net::HTTP::Post.new(uri.request_uri)
       request.content_type = "application/json"
-      request.body = { to_number: to_number, message: message, callback_url: "https://8d17-41-80-118-187.ngrok.io/delivery_status" }.to_json
+      request.body = { to_number: to_number, message: message, callback_url: "https://b09c-41-80-118-187.ngrok.io/delivery_status" }.to_json
       response = http.request(request)
 
       if response.is_a?(Net::HTTPSuccess)
@@ -78,7 +79,7 @@ module SmsSender
         http.use_ssl = true if uri.scheme == "https"
 
         request = Net::HTTP::Post.new(uri.request_uri)
-        request.body = { to_number: to_number, message: message, callback_url: "https://8d17-41-80-118-187.ngrok.io/delivery_status" }.to_json
+        request.body = { to_number: to_number, message: message, callback_url: "https://b09c-41-80-118-187.ngrok.io/delivery_status" }.to_json
         request.content_type = "application/json"
 
         response = http.request(request)
