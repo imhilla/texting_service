@@ -22,5 +22,3 @@ class DeliveryStatusController < ApplicationController
     permitted_params
   end
 end
-
-# ngrok https://gist.github.com/SalahHamza/799cac56b8c2cd20e6bfeb8886f18455
