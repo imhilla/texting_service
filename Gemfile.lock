@@ -96,11 +96,11 @@ GEM
       reline (>= 0.3.1)
     diff-lcs (1.5.0)
     erubi (1.12.0)
-    factory_girl (4.9.0)
-      activesupport (>= 3.0.0)
-    factory_girl_rails (4.9.0)
-      factory_girl (~> 4.9.0)
-      railties (>= 3.0.0)
+    factory_bot (6.2.1)
+      activesupport (>= 5.0.0)
+    factory_bot_rails (6.2.0)
+      factory_bot (~> 6.2.0)
+      railties (>= 5.0.0)
     globalid (1.1.0)
       activesupport (>= 5.0)
     i18n (1.14.1)
@@ -220,7 +220,8 @@ DEPENDENCIES
   capybara
   database_cleaner
   debug
-  factory_girl_rails
+  factory_bot_rails (~> 6.0)
+  minitest (~> 5.18.1)
   puma (~> 5.0)
   rack-cors
   rails (~> 7.0.6)
