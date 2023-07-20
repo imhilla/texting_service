@@ -77,3 +77,27 @@ Upon successful delivery of the message, if we receive a message ID in response,
 
 The send_sms method is executed in the background using a job. When a request is received at the `https://682b-41-80-118-187.ngrok.io/delivery_status` endpoint, it updates the status column in the message table. This allows us to track the status of a message using the received message ID.
 
+In summary, the message is sent, and the callback function is utilized to update the message status.
+
+## Load balancing
+
+We already have a way to track requests sent to each provider via the `message_count` column, you can see the counts
+from sending request here `http://127.0.0.1:3000/providers` - example
+
+            `[{
+                "id": 1,
+                "name": "provider1",
+                "created_at": "2023-07-20T06:06:24.096Z",
+                "updated_at": "2023-07-20T08:16:36.689Z",
+                "message_count": 3,
+                "url": "https://mock-text-provider.parentsquare.com/provider1"
+            },
+
+            {
+                "id": 2,
+                "name": "provider2",
+                "created_at": "2023-07-20T06:06:48.594Z",
+                "updated_at": "2023-07-20T08:17:00.989Z",
+                "message_count": 7,
+                "url": "https://mock-text-provider.parentsquare.com/provider2"
+            }]`
