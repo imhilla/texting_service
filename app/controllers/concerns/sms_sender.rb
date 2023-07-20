@@ -53,7 +53,7 @@ module SmsSender
       request = Net::HTTP::Post.new(uri.request_uri)
       request.content_type = "application/json"
 
-      call_back_url = "https://bb33-41-80-118-187.ngrok.io/delivery_status"
+      call_back_url = "https://5ab8-41-80-118-187.ngrok.io/delivery_status"
       request.body = { to_number: to_number, message: message, callback_url: call_back_url }.to_json
       response = http.request(request)
       if response.is_a?(Net::HTTPSuccess)
