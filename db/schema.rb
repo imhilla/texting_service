@@ -34,5 +34,4 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_20_055752) do
     t.integer "message_count"
     t.string "url"
   end
-
 end
