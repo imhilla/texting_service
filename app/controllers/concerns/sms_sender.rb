@@ -85,5 +85,33 @@ module SmsSender
         end
       end
     end
+
+    def render_invalid_number(to_number)
+      render json: { message: "Invalid phone number", to_number: to_number }
+    end
+
+    def send_sms(to_number, message)
+      MessageJob.perform_now(to_number, message)
+    end
+
+    def extract_message_id(response)
+      JSON.parse(response["body"])["message_id"]
+    end
+
+    def create_message(to_number, message, message_id)
+      Message.create(to_number: to_number, message: message, message_id: message_id)
+    end
+
+    def render_success(to_number, message_id)
+      render json: { message: "SMS sent successfully", to_number: to_number, message_id: message_id }
+    end
+
+    def render_failure_message(to_number)
+      render json: { message: "SMS sending failed for message: #{to_number}" }
+    end
+
+    def invalid_details
+      render json: { message: "Please provide a valid phone number and message" }
+    end
   end
 end
