@@ -44,7 +44,7 @@ This module requires the following:
 # Configuration
 
 Before you start using the api you will need to run a few end points to set up providers. To load balance
-the app has been configured to allow url porviders to be created throught end points, without it the sms service will not work correctly. head over<a href="https://crimson-moon-436442.postman.co/workspace/My-Workspace~e24b807c-503a-4cb0-8ce6-3e1c28b8e1eb/collection/13004566-87d5e060-ebcd-4538-b266-a0c2e5c6e4f9?action=share&creator=13004566"> here</a>, and send a POST request to `http://127.0.0.1:3000/providers` make sure you switch the url of the provider to set up the secon provider.
+the app has been configured to allow url porviders to be created throught end points, without it the sms service will not work correctly. head over<a href="https://crimson-moon-436442.postman.co/workspace/My-Workspace~e24b807c-503a-4cb0-8ce6-3e1c28b8e1eb/collection/13004566-87d5e060-ebcd-4538-b266-a0c2e5c6e4f9?action=share&creator=13004566"> here</a>, and send a POST request to `http://127.0.0.1:3000/providers` make sure you switch the url of the provider to set up the secon provider. Alternatively you can download postman collections from collections directory `/collections/text_service.postman_collection.json` and proceed from there.
 
       - Example for provider one `{ "name": "provider2", "message_count": 0, "url": "https://mock-text-provider.parentsquare.com/provider1"}`
 
@@ -53,3 +53,14 @@ the app has been configured to allow url porviders to be created throught end po
 # Troubleshooting
 
 Incase you experience any issues please reach out to me for clarification.
+
+# Testing
+
+Before running `bundle exec rspec` make sure to run `bundle install` to install gems.
+Then run `bundle exec rspec` from root directory.
+
+- To track how load balancing is working please send a request to `get_all_providers` from postman to see how `message count` is at the rate 30% to 70%
+
+# Documentation
+
+App documentation can be found here.

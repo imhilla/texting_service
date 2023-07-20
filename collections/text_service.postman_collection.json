@@ -1,0 +1,185 @@
+{
+	"info": {
+		"_postman_id": "87d5e060-ebcd-4538-b266-a0c2e5c6e4f9",
+		"name": "text_service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13004566",
+		"_collection_link": "https://crimson-moon-436442.postman.co/workspace/My-Workspace~e24b807c-503a-4cb0-8ce6-3e1c28b8e1eb/collection/13004566-87d5e060-ebcd-4538-b266-a0c2e5c6e4f9?action=share&creator=13004566&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "create_provider",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"provider2\",\r\n    \"message_count\": 0,\r\n    \"url\": \"https://mock-text-provider.parentsquare.com/provider2\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/providers",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"providers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "send_message",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"to_number\": \"11112222333\",\r\n    \"message\": \"This is a text message\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/messages",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"messages"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "mock_url1",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"to_number\": \"11112222333\",\r\n    \"message\": \"This is my message\",\r\n    \"callback_url\": \"https://682b-41-80-118-187.ngrok.io/delivery_status\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://mock-text-provider.parentsquare.com/provider1",
+					"protocol": "https",
+					"host": [
+						"mock-text-provider",
+						"parentsquare",
+						"com"
+					],
+					"path": [
+						"provider1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ngrok_call_back",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"message_id\": \"fbfbfefebfeufeufef8er83r83\",\r\n    \"status\": \"delivered\"\r\n}\r\n\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://682b-41-80-118-187.ngrok.io/delivery_status",
+					"protocol": "https",
+					"host": [
+						"682b-41-80-118-187",
+						"ngrok",
+						"io"
+					],
+					"path": [
+						"delivery_status"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_all_providers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:3000/providers",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"providers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update_provider_count",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"message_count\": 0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/providers/2",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"providers",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
