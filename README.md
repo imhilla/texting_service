@@ -92,7 +92,6 @@ from sending request here `http://127.0.0.1:3000/providers` - example
                 "message_count": 3,
                 "url": "https://mock-text-provider.parentsquare.com/provider1"
             },
-
             {
                 "id": 2,
                 "name": "provider2",
@@ -101,3 +100,9 @@ from sending request here `http://127.0.0.1:3000/providers` - example
                 "message_count": 7,
                 "url": "https://mock-text-provider.parentsquare.com/provider2"
             }]`
+
+## Good to haves
+
+1. By establishing a relationship between a message and provider, we can enhance tracking capabilities by storing the provider_id as a column in the message table. This approach allows us to easily determine which provider was used for a specific message, providing more comprehensive information beyond relying solely on the message ID.
+
+2. We can further enhance the codebase by modularizing the HTTP part of sending external requests into its own HTTP module concern. This approach promotes better code organization and reusability, making it easier to manage the HTTP-related functionalities across different parts of the application.
