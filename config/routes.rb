@@ -7,6 +7,6 @@ Rails.application.routes.draw do
   root "application#health_check"
   resources :messages, only: [:create]
   resources :delivery_status, only: [:create]
-  resources :providers, only: [:create, :update]
+  resources :providers, only: [:create, :update, :index]
   mount Sidekiq::Web => "/sidekiq"
 end
