@@ -28,7 +28,7 @@ module SmsSender
       end
     end
 
-    def send_sms_provider1(to_number, message)
+    def send_sms_provider(to_number, message)
       all_providers = sms_providers
       total_message_count = all_providers.sum { |provider| provider[:message_count] }
 
@@ -57,17 +57,14 @@ module SmsSender
       call_back_url = "https://bb33-41-80-118-187.ngrok.io/delivery_status"
       request.body = { to_number: to_number, message: message, callback_url: call_back_url }.to_json
       response = http.request(request)
-      puts(request.body, "request.bodyrequest.bodyrequest.bodyrequest.bodyrequest.bodyrequest.bodyrequest.bodyrequest.body")
       if response.is_a?(Net::HTTPSuccess)
         # Successful response
         body = response.body
         update_message_count(@provider_id)
-        # Process the response body as needed
         return { "success" => true, "body" => body }
       else
         # Handle unsuccessful response
         error_message = "Request failed with code #{response.code}"
-        puts(error_message, "error_messageerror_messageerror_messageerror_messageerror_messageerror_messageerror_messageerror_message")
         # Handle the error message appropriately, use second provider
         uri = URI.parse(@backup_url)
         http = Net::HTTP.new(uri.host, uri.port)

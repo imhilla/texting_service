@@ -39,7 +39,7 @@ class MessagesController < ApplicationController
   end
 
   def send_sms(to_number, message)
-    MessageJob.perform_now(to_number, message, first_part: true)
+    MessageJob.perform_now(to_number, message)
   end
 
   def extract_message_id(response)
