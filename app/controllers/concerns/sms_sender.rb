@@ -9,7 +9,6 @@ module SmsSender
     private
 
     def send_sms_provider1(to_number, message)
-      puts("heeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee")
       @provider1 = "https://mock-text-provider.parentsquare.com/provider1"
       @provider2 = "https://mock-text-provider.parentsquare.com/provider2"
 

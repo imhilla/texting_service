@@ -10,17 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_19_114946) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_20_043626) do
   create_table "delivery_statuses", force: :cascade do |t|
     t.string "status"
     t.string "message_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "message_statuses", force: :cascade do |t|
-    t.string "message_id"
-    t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -32,6 +25,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_19_114946) do
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "provider_id", null: false
+    t.index ["provider_id"], name: "index_messages_on_provider_id"
   end
 
+  create_table "providers", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "messages", "providers"
 end

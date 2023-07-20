@@ -5,7 +5,8 @@ Rails.application.routes.draw do
 
   # Tis is the default route path for checking if app is running
   root "application#health_check"
-  resources :messages
-  resources :delivery_status
+  resources :messages, only: [:create]
+  resources :delivery_status, only: [:create]
+  resources :providers, only: [:create]
   mount Sidekiq::Web => "/sidekiq"
 end
