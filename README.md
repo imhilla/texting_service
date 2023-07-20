@@ -106,3 +106,5 @@ from sending request here `http://127.0.0.1:3000/providers` - example
 1. By establishing a relationship between a message and provider, we can enhance tracking capabilities by storing the provider_id as a column in the message table. This approach allows us to easily determine which provider was used for a specific message, providing more comprehensive information beyond relying solely on the message ID.
 
 2. We can further enhance the codebase by modularizing the HTTP part of sending external requests into its own HTTP module concern. This approach promotes better code organization and reusability, making it easier to manage the HTTP-related functionalities across different parts of the application.
+
+3. We can establish relationships between the Provider model and Message model by defining associations. In this setup, a Delivery belongs to both the Provider and Message models, creating connections that facilitate data retrieval and navigation between these entities.
