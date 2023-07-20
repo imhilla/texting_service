@@ -9,6 +9,8 @@ class MessageJob < ApplicationJob
     first_part = args[2]
 
     if first_part
+ 
+
       send_sms_provider1(to_number, message)
     else
       send_sms_provider2(to_number, message)

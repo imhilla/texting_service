@@ -9,6 +9,7 @@ module SmsSender
     private
 
     def send_sms_provider1(to_number, message)
+
       @provider1 = "https://mock-text-provider.parentsquare.com/provider1"
       @provider2 = "https://mock-text-provider.parentsquare.com/provider2"
 
@@ -18,24 +19,26 @@ module SmsSender
       http.use_ssl = true if uri.scheme == "https"
       request = Net::HTTP::Post.new(uri.request_uri)
       request.content_type = "application/json"
-      request.body = { to_number: to_number, message: message, callback_url: "https://b09c-41-80-118-187.ngrok.io/delivery_status" }.to_json
+      request.body = { to_number: to_number, message: message, callback_url: "https://fb2c-41-80-118-187.ngrok.io/delivery_status" }.to_json
       response = http.request(request)
-
+      puts(request.body, "request.bodyrequest.bodyrequest.bodyrequest.bodyrequest.bodyrequest.bodyrequest.bodyrequest.body")
       if response.is_a?(Net::HTTPSuccess)
         # Successful response
         body = response.body
+
         # Process the response body as needed
         return { "success" => true, "body" => body }
       else
         # Handle unsuccessful response
         error_message = "Request failed with code #{response.code}"
+        puts(error_message, "error_messageerror_messageerror_messageerror_messageerror_messageerror_messageerror_messageerror_message")
         # Handle the error message appropriately, use second provider
         uri = URI.parse(@provider2)
         http = Net::HTTP.new(uri.host, uri.port)
         http.use_ssl = true if uri.scheme == "https"
 
         request = Net::HTTP::Post.new(uri.request_uri)
-        request.body = { to_number: to_number, message: message, callback_url: "https://b09c-41-80-118-187.ngrok.io/delivery_status" }.to_json
+        request.body = { to_number: to_number, message: message, callback_url: "https://fb2c-41-80-118-187.ngrok.io/delivery_status" }.to_json
         request.content_type = "application/json"
 
         response = http.request(request)

@@ -10,9 +10,9 @@ class MessagesController < ApplicationController
       return
     end
 
-    message = Message.find_by(to_number: to_number)
+    existing_message_found = Message.find_by(to_number: to_number)
 
-    if message&.status == "invalid"
+    if existing_message_found&.status == "invalid"
       render_invalid_number(to_number)
     else
       success = send_sms(to_number, message)
