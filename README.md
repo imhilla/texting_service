@@ -63,4 +63,17 @@ Then run `bundle exec rspec` from root directory.
 
 # Documentation
 
-App documentation can be found here.
+## Here is the Data Base schema for the app
+
+![DataBase schema](/databaseschema.jpg)
+
+The database schema consists of three straightforward tables. The first table is responsible for storing the messages to be sent, the second table tracks the message count, and the third table is responsible for tracking the delivery status and updating the status of each message.
+
+## Message dispatch process.
+
+When a request is sent to the send_message endpoint, it is directed to the message controller, which then communicates with the client. In the background, the create method checks if the message is empty. If the message is not empty, we proceed to verify if the provided number is valid and whether the message was previously sent. If the message has not been sent before, we proceed with sending it.
+
+Upon successful delivery of the message, if we receive a message ID in response, we increment the message count. This serves as a mechanism to track the number of times requests were sent, thereby enabling load balancing to efficiently manage the distribution of messages.
+
+The send_sms method is executed in the background using a job. When a request is received at the `https://682b-41-80-118-187.ngrok.io/delivery_status` endpoint, it updates the status column in the message table. This allows us to track the status of a message using the received message ID.
+
