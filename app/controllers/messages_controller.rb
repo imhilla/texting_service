@@ -53,4 +53,12 @@ class MessagesController < ApplicationController
   def render_success(to_number, message_id)
     render json: { message: "SMS sent successfully", to_number: to_number, message_id: message_id }
   end
+
+  def render_failure_message(to_number)
+    render json: { message: "SMS sending failed for message: #{to_number}" }
+  end
+
+  def invalid_details
+    render json: { message: "Please provide a valid phone number and message" }
+  end
 end
