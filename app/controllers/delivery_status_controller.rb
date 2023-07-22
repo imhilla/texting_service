@@ -21,4 +21,5 @@ class DeliveryStatusController < ApplicationController
     permitted_params = params.require(:delivery_status).permit(:status, :message_id)
     permitted_params
   end
+  
 end
