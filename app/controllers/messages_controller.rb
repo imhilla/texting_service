@@ -16,7 +16,6 @@ class MessagesController < ApplicationController
       render_invalid_number(to_number)
     else
       success = send_sms(to_number, message)
-
       if success["success"]
         message_id = extract_message_id(success)
 
